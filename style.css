@@ -1,0 +1,69 @@
+body {
+  background: #0f0f14;
+  color: #eaeaea;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #ffb347;
+  color: #0f0f14;
+  font-weight: bold;
+}
+
+.fanus {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  margin: 40px auto;
+  border-radius: 50% / 40%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#rose {
+  font-size: 80px;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Işık efekti */
+#lightEffect {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,220,150,0.9), rgba(255,220,150,0.4), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.light-on {
+  animation: glow 5s ease-out forwards;
+}
+
+@keyframes glow {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}

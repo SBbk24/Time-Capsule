@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Capsule - Rose Fanus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Işık efekti -->
+  <div id="lightEffect"></div>
+
+  <!-- Şifre ekranı -->
+  <div id="loginScreen">
+    <h2>Bu kapsül sadece sana aittir</h2>
+    <input type="password" id="password" placeholder="Şifre">
+    <button onclick="login()">Giriş</button>
+  </div>
+
+  <!-- Fanus ve gül ekranı -->
+  <div id="capsuleScreen" style="display:none;">
+    <div class="fanus">
+      <div id="rose">🥀</div>
+    </div>
+    <p id="text"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
