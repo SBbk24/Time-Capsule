@@ -11,6 +11,7 @@ body {
   overflow: hidden;
 }
 
+/* Şifre alanı */
 input {
   padding: 10px;
   font-size: 16px;
@@ -30,10 +31,11 @@ button {
   font-weight: bold;
 }
 
+/* Fanus */
 .fanus {
   position: relative;
-  width: 200px;
-  height: 250px;
+  width: 220px;
+  height: 260px;
   margin: 40px auto;
   border-radius: 50% / 40%;
   background: rgba(255,255,255,0.15);
@@ -42,28 +44,62 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
+/* Gül merkezi */
 #rose {
-  font-size: 80px;
-  transition: transform 1s ease, opacity 1s ease;
+  position: relative;
+  width: 150px;
+  height: 150px;
 }
 
-/* Işık efekti */
-#lightEffect {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255,220,150,0.9), rgba(255,220,150,0.4), transparent 70%);
+/* Yaprak */
+.petal {
+  position: absolute;
+  width: 10px;
+  height: 18px;
+  background: crimson;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+
+/* Eski düşmüş yaprak */
+.fallen-static {
+  transform: translateY(200px);
+  opacity: 0.2;
+}
+
+/* Günün yaprağı animasyon */
+.fall-animate {
+  animation: fall 2s forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(200px) rotate(90deg);
+    opacity: 0;
+  }
+}
+
+/* Fanus açılma */
+.glass-open {
+  animation: glassUp 1.5s forwards;
+}
+
+@keyframes glassUp {
+  to {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+}
+
+/* Mesaj */
+#message {
+  margin-top: 20px;
   opacity: 0;
-  pointer-events: none;
-}
-
-.light-on {
-  animation: glow 5s ease-out forwards;
-}
-
-@keyframes glow {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  100% { opacity: 0; }
+  transition: opacity 2s;
+  max-width: 400px;
 }
