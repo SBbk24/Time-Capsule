@@ -1,7 +1,7 @@
 const PASSWORD = "Bs220225"; // Şifreyi değiştir
 const totalPetals = 365;
 // Başlangıç tarihi (ÖZEL GÜN)
-const starDate = new Date("2026-03-10");
+const startDate = new Date("2026-03-10");
 // 3 yıl sonrası otomatik hesaplanır
 const endDate = new Date(starDate);
 endDate.setFullYear(endDate.getFullYear() + 3);
@@ -35,15 +35,16 @@ if (rose.children.length > 0) return;
     // rastgele konum (gül gibi dağılması için)
   const angle = Math.random() * 360;
     const radius = Math.random() * 80;
-    petal.style.transform =
-      rotate((angle)deg)
-    translate((radius)px)
+    petal.style.transform =`
+    rotate(${angle}deg)
+    translate(${radius}px)
+`;
     ;
     rose.appendChild(petal);
   }
 }
 function updateRose() {
-  const passeDays = getPasseDays();
+  const passedDays = getPasseDays();
   const petals = 
   document.querySelectorAll(".petal");
   petals.forEach((petal, index) => {
@@ -58,7 +59,9 @@ function updateRose() {
   });
 }
 function openGlass() {
-  if (!isFinalDay()) return;
+  if isFinalDay() {
+  const today = new Date();
+  return today >= endDate;
   const glass = 
   document.getElementById("glass");
   glass.classList.add("glass-open");
@@ -72,3 +75,4 @@ function showFinalMessage() {
   message.innerText = "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum Günün Kutlu Olsun.";
   message.style.opacity = "1";
 }
+
