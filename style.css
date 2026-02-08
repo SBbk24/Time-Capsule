@@ -32,18 +32,24 @@ button {
 }
 
 /* Fanus */
-.fanus {
-  position: relative;
-  width: 300px;
-  height: 380px;
-  border-radius: 50% / 45%;
-  background: rgba(255,255,255,0.08);
-  border: 2px solid rgba(255,255,255,0.25);
-  box-shadow: inset 0 0 40px rgba(255,255,255,0.02);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+#capsuleScreen{
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.fanus{
+  position:relative;
+  width:260px;
+  height:320px;
+  border-radius:50% / 45%;
+  background:rgba(255,255,255,0.08);
+  border:2px solid rgba(255,255,255,0.25);
+  box-shadow: inset 0 0 40px rgba(255,255,255,0.2);
+  overflow:hidden;
 }
 
 /* Gül */
@@ -103,4 +109,23 @@ button {
   transition: opacity 2s;
   max-width: 400px;
 }
+#lightEffect{
+  position:fixed;
+  inset:0;
+  background: radial-gradient(circle at center,
+  rgba(255,220,150,0.9),
+  rgba(255,220,150,0.4),
+  transparent 70%);
+  opacity:0;
+  pointer-events:none;
+}
 
+.light-on{
+  animation: glow 7s ease-out forwards;
+}
+
+@keyframes glow{
+  0%{opacity:0;}
+  20%{opacity:1;}
+  100%{opacity:0;}
+}
