@@ -147,8 +147,79 @@ button {
   padding:20px;
   border-radius:15px;
 }
+/* Işık */
+#lightEffect{
+  position:fixed;
+  inset:0;
+  background: radial-gradient(circle at center,
+  rgba(255,220,150,0.9),
+  rgba(255,220,150,0.4),
+  transparent 70%);
+  opacity:0;
+  pointer-events:none;
+}
+
+.light-on{
+  animation: glow 7s ease-out forwards;
+}
+
+@keyframes glow{
+  0%{opacity:0;}
+  20%{opacity:1;}
+  100%{opacity:0;}
+}
+
+/* Yaprak */
+.petal{
+  position:absolute;
+  width:18px;
+  height:26px;
+  background:#b30000;
+  border-radius:50%;
+  top:-40px;
+  animation:fall 4s ease-in forwards;
+}
+
+@keyframes fall{
+  0%{
+    top:-40px;
+    transform:rotate(0deg) translateX(0px);
+  }
+  50%{
+    transform:rotate(90deg) translateX(15px);
+  }
+  100%{
+    top:270px;
+    transform:rotate(180deg) translateX(-15px);
+  }
+}
+
+/* Final yaprak ağır çekim */
+.final{
+  animation:fall 6s ease-in forwards;
+}
+
+/* Zoom */
+.zoom{
+  animation:zoomIn 2s forwards;
+}
+
+@keyframes zoomIn{
+  to{
+    transform:scale(1.5);
+  }
+}
+
+/* Mesaj */
+#message{
+  margin-top:20px;
+  opacity:0;
+  max-width:400px;
+  transition:opacity 2s;
+}
 
 .petal-text{
   color:white;
   font-size:14px;
 }
+
