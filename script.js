@@ -64,6 +64,13 @@ function createPetal(isFinal){
   petal.style.left = Math.random() * 220 + "px";
 
   fanus.appendChild(petal);
+
+  // Eğer final değilse animasyon bitince sil
+  if(!isFinal){
+    setTimeout(()=>{
+      petal.remove();
+    }, 4000); // CSS animasyon süresiyle aynı olmalı
+  }
 }
 
 function typeWriter(text){
@@ -85,5 +92,3 @@ function typeWriter(text){
 
   write();
 }
-
-
