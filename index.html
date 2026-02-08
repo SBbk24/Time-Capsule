@@ -1,28 +1,109 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Time Capsule - Rose Fanus</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rose Capsule</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background: radial-gradient(circle at center,#111 0%,#000 100%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  font-family:Arial, sans-serif;
+}
+
+/* FANUS */
+.fanus{
+  position:relative;
+  width:260px;
+  height:320px;
+  border-radius:50% / 45%;
+  background:rgba(255,255,255,0.08);
+  border:2px solid rgba(255,255,255,0.25);
+  box-shadow: inset 0 0 40px rgba(255,255,255,0.2);
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  overflow:hidden;
+}
+
+/* GÜL */
+.rose{
+  position:absolute;
+  bottom:120px;
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle at 30% 30%,#ff4d4d,#800000);
+  border-radius:50%;
+  box-shadow:0 0 40px rgba(255,0,0,0.6);
+}
+
+/* YAPRAKLARIN BİRİKTİĞİ ALAN */
+.petals-ground{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:120px;
+}
+
+/* TEK YAPRAK */
+.petal{
+  position:absolute;
+  width:18px;
+  height:26px;
+  background:#cc0000;
+  border-radius:50%;
+  animation:fall 3s ease forwards;
+  opacity:0.9;
+}
+
+@keyframes fall{
+  0%{
+    top:-200px;
+    transform:rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    top:70px;
+    transform:rotate(180deg);
+    opacity:0.9;
+  }
+}
+</style>
 </head>
 <body>
 
-  <!-- Şifre ekranı -->
-  <div id="loginScreen">
-    <h2>Bu kapsül sadece sana aittir</h2>
-    <input type="password" id="password" placeholder="Şifre">
-    <button onclick="login()">Giriş</button>
-  </div>
+<div class="fanus">
+  <div class="rose"></div>
+  <div class="petals-ground" id="ground"></div>
+</div>
 
-  <!-- Fanus ve gül ekranı -->
-  <div id="capsuleScreen" style="display:none;">
-    <div id="glass" class="fanus" onclick="openGlass()">
-      <div id="rose">🌹</div>
-    </div>
-    <div id="message"></div>
-  </div>
+<script>
+const ground = document.getElementById("ground");
 
-  <script src="script.js"></script>
+function dropPetal(){
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+
+  petal.style.left = Math.random() * 220 + "px";
+  petal.style.animationDuration = (2 + Math.random()*2) + "s";
+
+  ground.appendChild(petal);
+
+  // maksimum 8 yaprak biriksin
+  if(ground.children.length > 8){
+    ground.removeChild(ground.children[0]);
+  }
+}
+
+// her 2 saniyede bir yaprak düşsün
+setInterval(dropPetal,2000);
+</script>
+
 </body>
 </html>
-
