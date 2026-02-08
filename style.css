@@ -255,3 +255,16 @@ button {
   border-radius:15px;
   font-weight:bold;
 }
+.rose{
+  font-size:130px;
+  position:absolute;
+  bottom:90px;
+  animation: breathe 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255,0,0,0.5));
+}
+
+@keyframes breathe{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.05); }
+  100%{ transform:scale(1); }
+}
