@@ -68,6 +68,7 @@ function createPetal(isFinal){
 
 function typeWriter(text){
   const message = document.getElementById("message");
+  message.classList.add("final-message");
   message.style.opacity = "1";
   message.innerHTML = "";
 
@@ -84,4 +85,5 @@ function typeWriter(text){
 
   write();
 }
+
 
