@@ -6,12 +6,17 @@ function login(){
 
   if(input === PASSWORD){
     document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("capsuleScreen").style.display = "block";
+    document.getElementById("capsuleScreen").style.display = "flex";
+
+    const light = document.getElementById("lightEffect");
+    light.classList.add("light-on");
+
     checkDate();
   } else {
     alert("Yanlış şifre");
   }
 }
+
 
 function checkDate(){
   const today = new Date();
@@ -51,3 +56,4 @@ function finalDay(){
     message.style.opacity = "1";
   }, 3500);
 }
+
