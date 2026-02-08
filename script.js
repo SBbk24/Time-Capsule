@@ -1,130 +1,53 @@
-/*************************
-   AYARLAR
-*************************/
-
 const PASSWORD = "Bs220225";
-const totalPetals = 365;
+const targetDate = new Date("2026-03-10");
 
-const startDate = new Date("2026-03-10");
-
-const endDate = new Date(startDate);
-endDate.setFullYear(endDate.getFullYear() + 3);
-
-
-/*************************
-   GİRİŞ
-*************************/
-
-function login() {
+function login(){
   const input = document.getElementById("password").value;
 
-  if (input === PASSWORD) {
+  if(input === PASSWORD){
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("capsuleScreen").style.display = "block";
-
-    createPetals();
-    updateRose();
+    checkDate();
   } else {
-    alert("Yanlış Şifre");
+    alert("Yanlış şifre");
   }
 }
 
-
-/*************************
-   TARİH
-*************************/
-
-function getPassedDays() {
+function checkDate(){
   const today = new Date();
-  const diff = today - startDate;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  return Math.max(days, 0);
-}
 
-function isFinalDay() {
-  const today = new Date();
-  return today >= endDate;
-}
-
-
-/*************************
-   YAPRAK OLUŞTURMA
-*************************/
-
-function createPetals() {
-  const rose = document.getElementById("rose");
-
-  if (rose.children.length > 0) return;
-
-  for (let i = 0; i < totalPetals; i++) {
-
-    const petal = document.createElement("div");
-    petal.classList.add("petal");
-    petal.dataset.index = i;
-
-    const angle = Math.random() * 360;
-    const radius = Math.random() * 80;
-
-    petal.style.transform = `
-      rotate(${angle}deg)
-      translate(${radius}px)
-    `;
-
-    rose.appendChild(petal);
+  // Eğer bugün 10.03.2026 ise
+  if(
+    today.getFullYear() === targetDate.getFullYear() &&
+    today.getMonth() === targetDate.getMonth() &&
+    today.getDate() === targetDate.getDate()
+  ){
+    finalDay();
+  } else {
+    document.getElementById("countdown").innerText =
+    "Sen arada bakabilirsin… Ama o, açılması gereken zamanı çok iyi bilir.";
   }
 }
 
-
-/*************************
-   GÜNLÜK DÖKÜM
-*************************/
-
-function updateRose() {
-
-  const passedDays = getPassedDays();
-  const petals = document.querySelectorAll(".petal");
-
-  petals.forEach((petal, index) => {
-
-    if (index < passedDays - 1) {
-      petal.classList.add("fallen-static");
-    }
-
-    if (index === passedDays - 1) {
-      petal.classList.add("fall-animate");
-    }
-
-  });
-}
-
-
-/*************************
-   FANUS AÇMA
-*************************/
-
-function openGlass() {
-
-  if (!isFinalDay()) return;
-
-  const glass = document.getElementById("glass");
-  glass.classList.add("glass-open");
-
-  setTimeout(() => {
-    showFinalMessage();
-  }, 1500);
-}
-
-
-/*************************
-   FİNAL MESAJ
-*************************/
-
-function showFinalMessage() {
-
+function finalDay(){
+  const fanus = document.getElementById("fanus");
   const message = document.getElementById("message");
 
-  message.innerText =
-    "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum Günün Kutlu Olsun.";
+  // Tek yaprak oluştur
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.style.left = "120px";
+  fanus.appendChild(petal);
 
-  message.style.opacity = "1";
+  // Zoom efekti
+  setTimeout(() => {
+    fanus.classList.add("zoom");
+  }, 2000);
+
+  // Mesaj göster
+  setTimeout(() => {
+    message.innerText =
+    "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum günün kutlu olsun Balım.";
+    message.style.opacity = "1";
+  }, 3500);
 }
