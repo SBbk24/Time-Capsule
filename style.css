@@ -112,3 +112,43 @@ button {
   20%{opacity:1;}
   100%{opacity:0;}
 }
+/* Yaprak */
+.petal{
+  position:absolute;
+  width:20px;
+  height:28px;
+  background:#b30000;
+  border-radius:50%;
+  top:-40px;
+  animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+  0%{ top:-40px; transform:rotate(0deg);}
+  100%{ top:260px; transform:rotate(180deg);}
+}
+
+/* Final yaprak zoom */
+.zoom{
+  animation:zoomIn 2s forwards;
+}
+
+@keyframes zoomIn{
+  to{
+    transform:scale(1.4);
+  }
+}
+
+/* Yazı yaprağın üstünde */
+.final-petal{
+  width:260px;
+  height:auto;
+  background:#b30000;
+  padding:20px;
+  border-radius:15px;
+}
+
+.petal-text{
+  color:white;
+  font-size:14px;
+}
