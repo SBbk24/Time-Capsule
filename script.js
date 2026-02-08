@@ -1,5 +1,5 @@
 const PASSWORD = "Bs220225";
-const targetDate = new Date("2026-03-10");
+const targetDate = new Date("2026-02-08");
 
 function login(){
   const input = document.getElementById("password").value;
@@ -92,3 +92,4 @@ function typeWriter(text){
 
   write();
 }
+
