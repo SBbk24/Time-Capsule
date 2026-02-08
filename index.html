@@ -13,8 +13,30 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow:hidden;
   font-family:Arial, sans-serif;
+  overflow:hidden;
+  color:white;
+  text-align:center;
+}
+
+/* LOGIN */
+#loginScreen{
+  text-align:center;
+}
+
+input{
+  padding:10px;
+  border:none;
+  border-radius:6px;
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background:#ffb347;
+  font-weight:bold;
 }
 
 /* FANUS */
@@ -30,9 +52,14 @@ body{
   justify-content:center;
   align-items:flex-end;
   overflow:hidden;
+  transition: transform 2s ease;
 }
 
-/* GÜL EMOJİ */
+.zoom{
+  transform: scale(1.4);
+}
+
+/* GÜL */
 .rose{
   position:absolute;
   bottom:120px;
@@ -40,64 +67,110 @@ body{
   filter: drop-shadow(0 0 20px rgba(255,0,0,0.7));
 }
 
-/* YAPRAKLARIN BİRİKTİĞİ ALAN */
-.petals-ground{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:120px;
-}
-
-/* TEK YAPRAK */
+/* YAPRAK */
 .petal{
   position:absolute;
-  width:18px;
-  height:26px;
+  width:20px;
+  height:28px;
   background:#cc0000;
   border-radius:50%;
+  top:-50px;
   animation:fall 3s ease forwards;
-  opacity:0.9;
 }
 
 @keyframes fall{
-  0%{
-    top:-200px;
-    transform:rotate(0deg);
-  }
-  100%{
-    top:70px;
-    transform:rotate(180deg);
-  }
+  0%{ top:-50px; transform:rotate(0deg);}
+  100%{ top:200px; transform:rotate(180deg);}
+}
+
+#countdown{
+  margin-top:20px;
+  font-size:18px;
+  opacity:0.8;
+}
+
+#message{
+  margin-top:20px;
+  font-size:20px;
+  opacity:0;
+  transition:opacity 2s ease;
 }
 </style>
 </head>
 <body>
 
-<div class="fanus">
-  <div class="rose">🥀</div>
-  <div class="petals-ground" id="ground"></div>
+<!-- LOGIN -->
+<div id="loginScreen">
+  <h2>Bu kapsül sadece sana aittir</h2>
+  <input type="password" id="password" placeholder="Şifre">
+  <button onclick="login()">Giriş</button>
+</div>
+
+<!-- CAPSULE -->
+<div id="capsuleScreen" style="display:none;">
+  <div class="fanus" id="fanus">
+    <div class="rose">🥀</div>
+  </div>
+  <div id="countdown"></div>
+  <div id="message"></div>
 </div>
 
 <script>
-const ground = document.getElementById("ground");
 
-function dropPetal(){
-  const petal = document.createElement("div");
-  petal.classList.add("petal");
+const PASSWORD = "Bs220225";
+const targetDate = new Date("2026-03-10");
 
-  petal.style.left = Math.random() * 220 + "px";
-  petal.style.animationDuration = (2 + Math.random()*2) + "s";
+function login(){
+  const input = document.getElementById("password").value;
 
-  ground.appendChild(petal);
-
-  // maksimum 8 yaprak biriksin
-  if(ground.children.length > 8){
-    ground.removeChild(ground.children[0]);
+  if(input === PASSWORD){
+    document.getElementById("loginScreen").style.display="none";
+    document.getElementById("capsuleScreen").style.display="block";
+    checkDate();
+  } else{
+    alert("Yanlış şifre");
   }
 }
 
-// her 2 saniyede bir yaprak düşsün
-setInterval(dropPetal,2000);
+function checkDate(){
+  const today = new Date();
+  const countdown = document.getElementById("countdown");
+
+  if(
+    today.getFullYear() === targetDate.getFullYear() &&
+    today.getMonth() === targetDate.getMonth() &&
+    today.getDate() === targetDate.getDate()
+  ){
+    finalDay();
+  } else{
+    const randomDays = Math.floor(Math.random()*300)+1;
+    countdown.innerText = "Açılmasına son " + randomDays + " gün";
+  }
+}
+
+function finalDay(){
+  const fanus = document.getElementById("fanus");
+  const message = document.getElementById("message");
+
+  // Tek yaprak düşsün
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.style.left = "120px";
+  fanus.appendChild(petal);
+
+  // Zoom efekti
+  setTimeout(()=>{
+    fanus.classList.add("zoom");
+  },2000);
+
+  // Mesaj göster
+  setTimeout(()=>{
+    message.innerText =
+    "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum günün kutlu olsun Balım.";
+    message.style.opacity="1";
+  },3500);
+}
+
 </script>
 
 </body>
