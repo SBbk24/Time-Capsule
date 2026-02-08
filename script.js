@@ -17,14 +17,43 @@ function login(){
 function checkDate(){
   const today = new Date();
 
+  // Final günü veya sonrası
   if(
-    today.getFullYear() === targetDate.getFullYear() &&
-    today.getMonth() === targetDate.getMonth() &&
-    today.getDate() === targetDate.getDate()
+    today.getFullYear() > targetDate.getFullYear() ||
+    (today.getFullYear() === targetDate.getFullYear() &&
+     today.getMonth() === targetDate.getMonth() &&
+     today.getDate() >= targetDate.getDate())
   ){
-    finalDay();
+    showFinalScene();
   } else {
-    normalDay();
+    document.getElementById("countdown").innerText =
+    "Sen arada bakabilirsin… Ama o, açılması gereken zamanı çok iyi bilir.";
+  }
+}
+
+function showFinalScene(){
+  const fanus = document.getElementById("fanus");
+  const message = document.getElementById("message");
+
+  // Final yaprak sadece 1 kez düşsün
+  if(!document.querySelector(".petal.final")){
+    createPetal(true);
+
+    // Zoom efekti
+    setTimeout(() => {
+      fanus.classList.add("zoom");
+    }, 2000);
+
+    // Mesaj göster
+    setTimeout(() => {
+      message.innerText =
+      "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum günün kutlu olsun Balım.";
+      message.style.opacity = "1";
+    }, 3500);
+  } else {
+    // Zaten final sahne hazırsa direkt göster
+    fanus.classList.add("zoom");
+    message.style.opacity = "1";
   }
 }
 
@@ -92,5 +121,6 @@ function typeWriter(text){
 
   write();
 }
+
 
 
