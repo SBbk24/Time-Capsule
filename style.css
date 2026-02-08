@@ -222,4 +222,36 @@ button {
   color:white;
   font-size:14px;
 }
+/* Final arka plan kararma */
+.final-background{
+  background:#000;
+  transition: background 2s;
+}
 
+/* Spotlight efekti */
+.final-background::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center,
+  rgba(255,255,255,0.15) 0%,
+  rgba(0,0,0,0.9) 70%);
+  pointer-events:none;
+}
+
+/* Final yaprak parlaması */
+.final{
+  animation:fall 6s ease-in forwards;
+  box-shadow: 0 0 40px rgba(255,0,0,0.9),
+              0 0 80px rgba(255,0,0,0.6);
+  background:#ff1a1a;
+}
+
+/* Final mesaj stili */
+.final-message{
+  color:black;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  font-weight:bold;
+}
