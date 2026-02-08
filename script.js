@@ -121,9 +121,3 @@ function typeWriter(text){
 
   write();
 }
-
-
-
-
-
-
