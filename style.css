@@ -34,24 +34,24 @@ button {
 /* Fanus */
 .fanus {
   position: relative;
-  width: 220px;
-  height: 260px;
-  margin: 40px auto;
-  border-radius: 50% / 40%;
-  background: rgba(255,255,255,0.15);
-  border: 2px solid rgba(255,255,255,0.3);
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.4);
+  width: 300px;
+  height: 380px;
+  border-radius: 50% / 45%;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.25);
+  box-shadow: inset 0 0 40px rgba(255,255,255,0.02);
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  overflow: hidden;
 }
 
-/* Gül merkezi */
-#rose {
-  position: relative;
-  width: 150px;
-  height: 150px;
+/* Gül */
+.rose {
+  font-size: 130px;   /* büyüttük */
+  position: absolute;
+  bottom: 90px;       /* ortalamaya aldık */
+  filter: drop-shadow(0 0 25px rgba(255,0,0,0.8));
 }
 
 /* Yaprak */
@@ -103,3 +103,4 @@ button {
   transition: opacity 2s;
   max-width: 400px;
 }
+
