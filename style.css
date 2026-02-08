@@ -72,15 +72,27 @@ button {
 .petal{
   position:absolute;
   width:18px;
-  height:25px;
+  height:26px;
   background:#b30000;
   border-radius:50%;
-  animation:fall 3s linear forwards;
+  top:-40px;
+  animation:fall 4s ease-in forwards;
 }
 
 @keyframes fall{
-  0%{ top:-40px; transform:rotate(0deg);}
-  100%{ top:260px; transform:rotate(180deg); opacity:0;}
+  0%{
+    top:-40px;
+    opacity:1;
+    transform:rotate(0deg) translateX(0px);
+  }
+  70%{
+    opacity:1;
+  }
+  100%{
+    top:320px;
+    opacity:0;
+    transform:rotate(180deg) translateX(-20px);
+  }
 }
 
 /* MESAJ */
@@ -270,3 +282,4 @@ button {
   50%{ transform:translateX(-50%) scale(1.05); }
   100%{ transform:translateX(-50%) scale(1); }
 }
+
