@@ -7,11 +7,6 @@ function login(){
   if(input === PASSWORD){
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("capsuleScreen").style.display = "flex";
-
-    // 7 saniye ışık
-    const light = document.getElementById("lightEffect");
-    light.classList.add("light-on");
-
     checkDate();
   } else {
     alert("Yanlış şifre");
@@ -28,24 +23,53 @@ function checkDate(){
   ){
     finalDay();
   } else {
-    document.getElementById("countdown").innerText =
-    "Sen arada bakabilirsin… Ama o, açılması gereken zamanı çok iyi bilir.";
+    normalDay();
   }
+}
+
+function normalDay(){
+  const fanus = document.getElementById("fanus");
+
+  // 7 yaprak düşür
+  for(let i=0; i<7; i++){
+    setTimeout(()=>{
+      createPetal(false);
+    }, i * 400);
+  }
+
+  document.getElementById("countdown").innerText =
+  "Sen arada bakabilirsin… Ama o, açılması gereken zamanı çok iyi bilir.";
 }
 
 function finalDay(){
   const fanus = document.getElementById("fanus");
-  const message = document.getElementById("message");
+
+  // Tek yaprak
+  createPetal(true);
+
+  setTimeout(()=>{
+    fanus.classList.add("zoom");
+  },2000);
+}
+
+function createPetal(isFinal){
+  const fanus = document.getElementById("fanus");
 
   const petal = document.createElement("div");
-  petal.classList.add("petal");
-  petal.style.left = "50%";
-  petal.style.transform = "translateX(-50%)";
-  fanus.appendChild(petal);
+  petal.className = "petal";
 
-  setTimeout(() => {
-    message.innerText =
+  petal.style.left = Math.random() * 230 + "px";
+
+  if(isFinal){
+    petal.classList.add("final-petal");
+
+    const text = document.createElement("div");
+    text.className = "petal-text";
+    text.innerText =
     "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum günün kutlu olsun Balım.";
-    message.style.opacity = "1";
-  }, 3000);
+
+    petal.appendChild(text);
+  }
+
+  fanus.appendChild(petal);
 }
