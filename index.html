@@ -32,15 +32,12 @@ body{
   overflow:hidden;
 }
 
-/* GÜL */
+/* GÜL EMOJİ */
 .rose{
   position:absolute;
   bottom:120px;
-  width:120px;
-  height:120px;
-  background:radial-gradient(circle at 30% 30%,#ff4d4d,#800000);
-  border-radius:50%;
-  box-shadow:0 0 40px rgba(255,0,0,0.6);
+  font-size:90px;
+  filter: drop-shadow(0 0 20px rgba(255,0,0,0.7));
 }
 
 /* YAPRAKLARIN BİRİKTİĞİ ALAN */
@@ -66,12 +63,10 @@ body{
   0%{
     top:-200px;
     transform:rotate(0deg);
-    opacity:1;
   }
   100%{
     top:70px;
     transform:rotate(180deg);
-    opacity:0.9;
   }
 }
 </style>
@@ -107,4 +102,3 @@ setInterval(dropPetal,2000);
 
 </body>
 </html>
-
