@@ -8,6 +8,7 @@ function login(){
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("capsuleScreen").style.display = "flex";
 
+    // 7 saniye ışık
     const light = document.getElementById("lightEffect");
     light.classList.add("light-on");
 
@@ -17,11 +18,9 @@ function login(){
   }
 }
 
-
 function checkDate(){
   const today = new Date();
 
-  // Eğer bugün 10.03.2026 ise
   if(
     today.getFullYear() === targetDate.getFullYear() &&
     today.getMonth() === targetDate.getMonth() &&
@@ -38,22 +37,15 @@ function finalDay(){
   const fanus = document.getElementById("fanus");
   const message = document.getElementById("message");
 
-  // Tek yaprak oluştur
   const petal = document.createElement("div");
   petal.classList.add("petal");
-  petal.style.left = "120px";
+  petal.style.left = "50%";
+  petal.style.transform = "translateX(-50%)";
   fanus.appendChild(petal);
 
-  // Zoom efekti
-  setTimeout(() => {
-    fanus.classList.add("zoom");
-  }, 2000);
-
-  // Mesaj göster
   setTimeout(() => {
     message.innerText =
     "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum günün kutlu olsun Balım.";
     message.style.opacity = "1";
-  }, 3500);
+  }, 3000);
 }
-
