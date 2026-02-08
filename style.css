@@ -1,28 +1,32 @@
 body {
+  margin:0;
   background: #0f0f14;
   color: #eaeaea;
   font-family: Arial, sans-serif;
-  text-align: center;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   overflow: hidden;
 }
 
-/* Şifre alanı */
+/* LOGIN */
+#loginScreen{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
 input {
   padding: 10px;
   font-size: 16px;
   border-radius: 6px;
   border: none;
+  margin-top:10px;
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
-  margin-left: 10px;
+  margin-top:10px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -31,20 +35,22 @@ button {
   font-weight: bold;
 }
 
-/* Fanus */
+/* CAPSULE */
 #capsuleScreen{
+  display:none;
   width:100%;
   height:100vh;
-  display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  text-align:center;
 }
 
+/* FANUS */
 .fanus{
   position:relative;
-  width:260px;
-  height:320px;
+  width:280px;
+  height:350px;
   border-radius:50% / 45%;
   background:rgba(255,255,255,0.08);
   border:2px solid rgba(255,255,255,0.25);
@@ -52,68 +58,40 @@ button {
   overflow:hidden;
 }
 
-/* Gül */
+/* GÜL ORTALANMIŞ */
 .rose {
-  font-size: 130px;   /* büyüttük */
+  font-size: 130px;
   position: absolute;
-  bottom: 90px;       /* ortalamaya aldık */
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
   filter: drop-shadow(0 0 25px rgba(255,0,0,0.8));
 }
 
-/* Yaprak */
+/* YAPRAK */
 .petal{
   position:absolute;
   width:18px;
   height:25px;
   background:#b30000;
   border-radius:50%;
-  left:50%;
-  transform:translateX(-50%);
+  animation:fall 3s linear forwards;
 }
 
-/* Eski düşmüş yaprak */
-.fallen-static{
-  top:260px;
-  opacity:0.2;
+@keyframes fall{
+  0%{ top:-40px; transform:rotate(0deg);}
+  100%{ top:260px; transform:rotate(180deg); opacity:0;}
 }
 
-/* Günün yaprağı animasyonu */
-.fall-animate{
-  animation: petalFall 3s linear forwards;
-}
-
-@keyframes petalFall{
-  0%{
-    top:-40px;
-    transform:translateX(-50%) rotate(0deg);
-  }
-  100%{
-    top:260px;
-    transform:translateX(-50%) rotate(180deg);
-    opacity:0;
-  }
-}
-
-
-/* Fanus açılma */
-.glass-open {
-  animation: glassUp 1.5s forwards;
-}
-
-@keyframes glassUp {
-  to {
-    transform: translateY(-300px);
-    opacity: 0;
-  }
-}
-
-/* Mesaj */
+/* MESAJ */
 #message {
-  margin-top: 20px;
+  margin-top: 25px;
   opacity: 0;
   transition: opacity 2s;
   max-width: 400px;
 }
+
+/* IŞIK EFEKTİ */
 #lightEffect{
   position:fixed;
   inset:0;
@@ -134,4 +112,3 @@ button {
   20%{opacity:1;}
   100%{opacity:0;}
 }
-
