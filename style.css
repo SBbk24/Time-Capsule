@@ -61,34 +61,39 @@ button {
 }
 
 /* Yaprak */
-.petal {
-  position: absolute;
-  width: 10px;
-  height: 18px;
-  background: crimson;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform-origin: center;
+.petal{
+  position:absolute;
+  width:18px;
+  height:25px;
+  background:#b30000;
+  border-radius:50%;
+  left:50%;
+  transform:translateX(-50%);
 }
 
 /* Eski düşmüş yaprak */
-.fallen-static {
-  transform: translateY(200px);
-  opacity: 0.2;
+.fallen-static{
+  top:260px;
+  opacity:0.2;
 }
 
-/* Günün yaprağı animasyon */
-.fall-animate {
-  animation: fall 2s forwards;
+/* Günün yaprağı animasyonu */
+.fall-animate{
+  animation: petalFall 3s linear forwards;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(200px) rotate(90deg);
-    opacity: 0;
+@keyframes petalFall{
+  0%{
+    top:-40px;
+    transform:translateX(-50%) rotate(0deg);
+  }
+  100%{
+    top:260px;
+    transform:translateX(-50%) rotate(180deg);
+    opacity:0;
   }
 }
+
 
 /* Fanus açılma */
 .glass-open {
@@ -129,3 +134,4 @@ button {
   20%{opacity:1;}
   100%{opacity:0;}
 }
+
