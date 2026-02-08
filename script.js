@@ -40,6 +40,8 @@ function normalDay(){
 }
 
 function finalDay(){
+  document.body.classList.add("final-background");
+
   createPetal(true);
 
   setTimeout(()=>{
@@ -82,3 +84,4 @@ function typeWriter(text){
 
   write();
 }
+
