@@ -5,174 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rose Capsule</title>
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  background: radial-gradient(circle at center,#111 0%,#000 100%);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:Arial, sans-serif;
-  overflow:hidden;
-  color:white;
-  text-align:center;
-}
-
-/* LOGIN */
-#loginScreen{
-  text-align:center;
-}
-
-input{
-  padding:10px;
-  border:none;
-  border-radius:6px;
-}
-
-button{
-  padding:10px 20px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  background:#ffb347;
-  font-weight:bold;
-}
-
-/* FANUS */
-.fanus{
-  position:relative;
-  width:260px;
-  height:320px;
-  border-radius:50% / 45%;
-  background:rgba(255,255,255,0.08);
-  border:2px solid rgba(255,255,255,0.25);
-  box-shadow: inset 0 0 40px rgba(255,255,255,0.2);
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  overflow:hidden;
-  transition: transform 2s ease;
-}
-
-.zoom{
-  transform: scale(1.4);
-}
-
-/* GÜL */
-.rose{
-  position:absolute;
-  bottom:120px;
-  font-size:90px;
-  filter: drop-shadow(0 0 20px rgba(255,0,0,0.7));
-}
-
-/* YAPRAK */
-.petal{
-  position:absolute;
-  width:20px;
-  height:28px;
-  background:#cc0000;
-  border-radius:50%;
-  top:-50px;
-  animation:fall 3s ease forwards;
-}
-
-@keyframes fall{
-  0%{ top:-50px; transform:rotate(0deg);}
-  100%{ top:200px; transform:rotate(180deg);}
-}
-
-#countdown{
-  margin-top:20px;
-  font-size:18px;
-  opacity:0.8;
-}
-
-#message{
-  margin-top:20px;
-  font-size:20px;
-  opacity:0;
-  transition:opacity 2s ease;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- LOGIN -->
+<!-- LOGIN SCREEN -->
 <div id="loginScreen">
   <h2>Bu kapsül sadece sana aittir</h2>
   <input type="password" id="password" placeholder="Şifre">
   <button onclick="login()">Giriş</button>
 </div>
 
-<!-- CAPSULE -->
-<div id="capsuleScreen" style="display:none;">
+<!-- CAPSULE SCREEN -->
+<div id="capsuleScreen" style="display:none; text-align:center;">
+
   <div class="fanus" id="fanus">
     <div class="rose">🥀</div>
   </div>
-  <div id="countdown"></div>
-  <div id="message"></div>
+
+  <div id="countdown" style="margin-top:20px;"></div>
+  <div id="message" style="margin-top:20px; opacity:0;"></div>
+
 </div>
 
-<script>
-
-const PASSWORD = "Bs220225";
-const targetDate = new Date("2026-03-10");
-
-function login(){
-  const input = document.getElementById("password").value;
-
-  if(input === PASSWORD){
-    document.getElementById("loginScreen").style.display="none";
-    document.getElementById("capsuleScreen").style.display="block";
-    checkDate();
-  } else{
-    alert("Yanlış şifre");
-  }
-}
-
-function checkDate(){
-  const today = new Date();
-  const countdown = document.getElementById("countdown");
-
-  if(
-    today.getFullYear() === targetDate.getFullYear() &&
-    today.getMonth() === targetDate.getMonth() &&
-    today.getDate() === targetDate.getDate()
-  ){
-    finalDay();
-  } else{
-    countdown.innerText = "Sen arada bakabilirsin...\nAma o, açılması gereken zamanı biliyor.";
-  }
-}
-
-function finalDay(){
-  const fanus = document.getElementById("fanus");
-  const message = document.getElementById("message");
-
-  // Tek yaprak düşsün
-  const petal = document.createElement("div");
-  petal.classList.add("petal");
-  petal.style.left = "120px";
-  fanus.appendChild(petal);
-
-  // Zoom efekti
-  setTimeout(()=>{
-    fanus.classList.add("zoom");
-  },2000);
-
-  // Mesaj göster
-  setTimeout(()=>{
-    message.innerText =
-    "Ruhumun en güzel ve en temiz köşesinde sen varsın, seni sonsuza kadar seveceğim... Doğum günün kutlu olsun Balım.";
-    message.style.opacity="1";
-  },3500);
-}
-
-</script>
+<!-- SADECE BU OLMALI -->
+<script src="script.js"></script>
 
 </body>
 </html>
-
-
