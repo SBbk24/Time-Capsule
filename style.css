@@ -282,4 +282,15 @@ button {
   50%{ transform:translateX(-50%) scale(1.05); }
   100%{ transform:translateX(-50%) scale(1); }
 }
+#loginScreen h2 {
+  font-size: 20px;
+  color: #ffb3b3;
+  text-shadow: 0 0 8px rgba(255,180,180,0.7);
+  animation: glowText 3s ease-in-out infinite;
+}
 
+@keyframes glowText {
+  0% { text-shadow: 0 0 8px rgba(255,180,180,0.7); }
+  50% { text-shadow: 0 0 18px rgba(255,200,200,1); }
+  100% { text-shadow: 0 0 8px rgba(255,180,180,0.7); }
+}
